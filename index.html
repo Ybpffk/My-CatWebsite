@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котик</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        img {
+            width: 300px; /* Размер изображения котика */
+            cursor: pointer; /* Курсор в виде руки при наведении */
+        }
+    </style>
+</head>
+<body>
+    <h1>Тыкай на котика!</h1>
+    <img id="catImage" src="https://avatars.mds.yandex.net/i?id=4c97608be15b3bebf4b15607441eb05287edbba8-9040073-images-thumbs&n=13" alt="Котик" onclick="incrementCounter()">
+    <p>Количество нажатий: <span id="clickCount">0</span></p>
+    <p id="catMessage">Котик говорит: "Нажми на меня!"</p>
+
+    <audio id="meowSound" src="https://zvukogram.com/zvuk/28282/"></audio> <!-- Замените на ссылку на звуковой файл мяу -->
+
+    <script>
+        let count = 0;
+        const messages = [
+            "Я котик, ты лучший!",
+            "Снова нажимаешь? Мне это нравится!",
+            "Мяу! Ты очень активный!",
+            "Как дела, человек?",
+            "Нажми на меня еще раз!"
+        ];
+
+        function incrementCounter() {
+            count++;
+            document.getElementById('clickCount').textContent = count;
+            
+            // Проигрываем звук
+            document.getElementById('meowSound').play();
+
+            // Изменяем сообщение кота
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById('catMessage').textContent = "Котик говорит: " + messages[randomIndex];
+        }
+    </script>
+</body>
+</html>
